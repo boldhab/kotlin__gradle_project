@@ -1,6 +1,6 @@
 
 package org.dbu.library.service
-
+import org.dbu.library.model.Patron
 import org.dbu.library.model.Book
 import org.dbu.library.repository.LibraryRepository
 
@@ -63,5 +63,15 @@ class DefaultLibraryService(
             book.title.contains(term, ignoreCase = true) ||
                 book.author.contains(term, ignoreCase = true)
         }
+
     }
+
+override fun findBook(isbn: String): Book? {
+    return repository.findBook(isbn)
+}
+
+override fun getAllPatrons(): List<Patron> {
+    return repository.getAllPatrons()
+}
+
 }
